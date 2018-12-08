@@ -1,4 +1,4 @@
-# istack
+# iStack
 Icon stack bars with group coloring
 
 # Installation
