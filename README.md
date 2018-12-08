@@ -27,5 +27,8 @@ p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed'
 ```
 ![Alt text](mtcars.png?raw=true "")
 
+# Credits
+Kelly Bolton
+Guangchuang Yu (ggimage)
 
 
