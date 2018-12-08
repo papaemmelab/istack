@@ -6,7 +6,7 @@
 \usage{
 istack(D, var, group,
   icon = "https://teng-gao.github.io/images/person.png",
-  icon_size = 0.03)
+  icon_size = 0.03, palette = "Set2")
 }
 \arguments{
 \item{D}{Data Frame}
@@ -16,6 +16,8 @@ istack(D, var, group,
 \item{group}{grouping categorical variable that is to color the icons}
 
 \item{icon}{link to any image icon on the internet. For coloring to work, has to be a PNG with transparent background}
+
+\item{palette}{Color theme in RColorBrewer}
 }
 \value{
 a ggplot object that can be modified downstream

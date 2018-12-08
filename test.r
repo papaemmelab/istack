@@ -1,14 +1,15 @@
 library(istack)
 library(ggplot2)
-# library(devtools)
-# setwd('/Users/gaot/Desktop/istack')
+library(devtools)
+setwd('/Users/gaot/Desktop/istack')
 
 # cancer types and treatments
 cancers = simulate_cancers()
 
 p = istack(cancers, 'Disease', 'Treatment', 
            icon = "https://teng-gao.github.io/images/person.png",
-           icon_size = 0.07)
+           icon_size = 0.07, 
+           palette = "Set2")
 
 p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) 
 

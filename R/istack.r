@@ -3,12 +3,13 @@
 #' @param var categorical variable that is to be stacked
 #' @param group grouping categorical variable that is to color the icons
 #' @param icon link to any image icon on the internet. For coloring to work, has to be a PNG with transparent background
+#' @param palette Color theme in RColorBrewer
 #' @return a ggplot object that can be modified downstream
 #' @export
 
-istack = function(D, var, group, icon = "https://teng-gao.github.io/images/person.png", icon_size = 0.03) {
+istack = function(D, var, group, icon = "https://teng-gao.github.io/images/person.png", icon_size = 0.03, palette = "Set2") {
   
-  colors = RColorBrewer::brewer.pal(length(unique(D[[group]])), "Set2")
+  colors = RColorBrewer::brewer.pal(length(unique(D[[group]])), palette)
   cmap = data.frame(level = unique(D[[group]]), color = colors)
   
   D['var'] = factor(D[[var]])
