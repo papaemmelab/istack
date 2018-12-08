@@ -14,6 +14,7 @@ p = istack(cancers, 'Disease', 'Treatment',
 
 p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) 
 ```
+![Alt text](cancers.png?raw=true "")
 
 
 # Example: mtcars
@@ -24,3 +25,7 @@ p = istack(mtcars, 'carb', 'gear',
 
 p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed')) + coord_flip()
 ```
+![Alt text](mtcars.png?raw=true "")
+
+
+
