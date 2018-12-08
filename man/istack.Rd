@@ -17,6 +17,9 @@ istack(D, var, group,
 
 \item{icon}{link to any image icon on the internet. For coloring to work, has to be a PNG with transparent background}
 }
+\value{
+a ggplot object that can be modified downstream
+}
 \description{
 Stack custom icons with group coloring
 }
