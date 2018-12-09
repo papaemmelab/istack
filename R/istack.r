@@ -83,7 +83,7 @@ simulate_cancers = function() {
                  'Targeted therapy')
   nums = sample(5:30, length(diseases), replace=T)
 
-  cancers = as.data.frame(unname(do.call(c, mapply(function(d, n) {rep(d, n)}, diseases, nums))))
+  cancers = data.frame(unname(do.call(c, mapply(function(d, n) {rep(d, n)}, diseases, nums))))
   colnames(cancers) = 'Disease'
   cancers['Treatment'] = sample(treatments, nrow(cancers), replace=T)
   return(cancers)

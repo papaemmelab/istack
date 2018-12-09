@@ -1,7 +1,7 @@
 library(istack)
 library(ggplot2)
-library(devtools)
-setwd('/Users/gaot/Desktop/istack')
+# library(devtools)
+# setwd('/Users/gaot/Desktop/istack')
 
 # cancer types and treatments
 cancers = simulate_cancers()
