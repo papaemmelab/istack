@@ -4,6 +4,7 @@ Icon stack bars with group coloring
 # Installation
 ```
 devtools::install_github("teng-gao/istack")
+devtools::install_version("ggplot2", version = "3.0.0", repos = "http://cran.us.r-project.org")
 ```
 
 # Example: Cancer types and treatment
@@ -35,7 +36,8 @@ p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed'
 ![Alt text](mtcars.png?raw=true "")
 
 # Note
-For now only PNGs with transparent backgrounds work well with coloring.
+- For now only works for ggplot2 `3.0.0`
+- For now only PNGs with transparent backgrounds work well with coloring.
 
 # Credits
  - @kellylbolton
