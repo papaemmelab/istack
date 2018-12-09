@@ -38,7 +38,7 @@ p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed'
 For now only PNGs with transparent backgrounds work well with coloring.
 
 # Credits
- - Kelly Bolton
- - Guangchuang Yu (ggimage)
+ - @kellylbolton
+ - @GuangchuangYu
 
 
