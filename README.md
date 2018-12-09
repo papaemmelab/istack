@@ -1,9 +1,14 @@
 # iStack
 Icon stack bars with group coloring
 
+# Note
+- For now only works with ggplot2 `3.0.0`. You might need to downgrade (see below)
+- For now only PNGs with transparent backgrounds work well with coloring.
+
 # Installation
 ```
 devtools::install_github("teng-gao/istack")
+devtools::install_version("ggplot2", version = "3.0.0", repos = "http://cran.us.r-project.org")
 ```
 
 # Example: Cancer types and treatment
@@ -33,9 +38,6 @@ p = istack(mtcars, 'carb', 'gear',
 p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed')) + coord_flip()
 ```
 ![Alt text](mtcars.png?raw=true "")
-
-# Note
-For now only PNGs with transparent backgrounds work well with coloring.
 
 # Credits
  - @kellylbolton
