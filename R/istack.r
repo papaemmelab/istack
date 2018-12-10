@@ -56,9 +56,9 @@ istack = function(D, var, group, icon, size = 0.03, asp = 1) {
 #' Simulate cancer demo dataset
 #' @export
 simulate_cancers = function(n = 10) {
-  diseases = c(rep('Breast caner', 3), rep('Prostate cancer', 3),
+  diseases = c(rep('Breast cancer', 3), rep('Prostate cancer', 3),
                'Brain cancer', rep('Colorectal cancer', 2), rep('Colon cancer', 3),
-               'Pancreatic cancer', 'Thyroid cancer', 'Lung Cancer',
+               'Pancreatic cancer', 'Thyroid cancer', 'Lung cancer',
                'Bladder cancer', 'Ovarian cancer', 'Sarcoma', 'Leukemia')
   treatments = c('Untreated', rep('Radiotherapy', 3), rep('Chemotherapy', 5),
                  'Targeted therapy')
