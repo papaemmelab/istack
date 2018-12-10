@@ -26,6 +26,23 @@ p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed'
 ```
 ![Alt text](cancers.png?raw=true "")
 
+# Example: Gains
+```
+set.seed(2018-12-09)
+gym = simulate_gym(10)
+
+p = istack(gym, 
+           var = 'exercises', 
+           group = 'days', 
+           icon = "https://svgsilh.com/svg/295375.svg",
+           size = 0.015,
+           asp = 3)
+
+p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) +
+  ggtitle('Gains')
+```
+![Alt text](gains.png?raw=true "")
+
 
 # Example: mtcars
 ```
