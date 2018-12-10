@@ -5,17 +5,26 @@
 #' @param icon link to any image icon on the internet. For coloring to work, has to be a PNG with transparent background
 #' @param size icon size
 #' @param asp icon aspect ratio
+#' @param size icon size
 #' @return a ggplot object that can be modified downstream
 #' @export
 
-istack = function(D, var, group, icon, size = 0.03, asp = 1) {
+istack = function(D, var, group = NULL, icon, size = 0.03, asp = 1, sort = TRUE) {
+  
+  # incase this is a tibble
+  D = data.frame(D)
   
   # giving nicknames
   D['var'] = factor(D[[var]])
-  D['group'] = factor(D[[group]])
+  
+  if (!is.null(group)) {
+    D['group'] = factor(D[[group]])
+  }
   
   # sort the levels of variable column
-  D['var'] = factor(D[['var']], names(sort(table(D[['var']]), decreasing = F)))
+  if (sort) {
+    D['var'] = factor(D[['var']], names(sort(table(D[['var']]), decreasing = FALSE)))
+  }
   
   # calculate coordinates
   D = 
@@ -24,7 +33,9 @@ istack = function(D, var, group, icon, size = 0.03, asp = 1) {
       lapply(
         split(D, D['var']), 
         function(df) {
-          df = df[order(df['group']),]
+          if (!is.null(group)) {
+            df = df[order(df['group']),]
+          }
           df['n'] = seq(nrow(df))
           return(df)
         }
@@ -34,24 +45,28 @@ istack = function(D, var, group, icon, size = 0.03, asp = 1) {
   D['image'] = icon
   
   # create the plot
-  p = ggplot2::ggplot(data = D, aes(x = n, y = var, color = group)) + 
-      ggimage::geom_image(aes(image=image), asp = asp, size = size) +
-      ggplot2::theme(
-        plot.title = element_text(hjust = 0.5),
-        panel.background = element_blank(),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.ticks = element_blank(),
-        axis.line = element_blank()
-      ) + 
-      ggplot2::labs(color = group) + 
-      ggplot2::ylab(var) +
-      ggplot2::xlab('') + 
-      ggplot2::scale_x_continuous(breaks = scales::pretty_breaks(4), expand = c(0,0.6))
+  if (!is.null(group)) {
+    base = ggplot2::ggplot(data = D, aes(x = n, y = var, color = group)) + ggplot2::labs(color = group)
+  } else {
+    base = ggplot2::ggplot(data = D, aes(x = n, y = var))
+  }
+  
+  p = base + 
+    ggimage::geom_image(aes(image=image), asp = asp, size = size) +
+    ggplot2::theme(
+      plot.title = element_text(hjust = 0.5),
+      panel.background = element_blank(),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      axis.ticks = element_blank(),
+      axis.line = element_blank()
+    ) + 
+    ggplot2::ylab(var) +
+    ggplot2::xlab('') + 
+    ggplot2::scale_x_continuous(breaks = scales::pretty_breaks(4), expand = c(0,0.6))
   
   return(p)
 }
-
 
 #' Simulate cancer demo dataset
 #' @export

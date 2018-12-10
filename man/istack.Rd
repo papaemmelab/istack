@@ -4,7 +4,8 @@
 \alias{istack}
 \title{Stack custom icons with group coloring}
 \usage{
-istack(D, var, group, icon, size = 0.03, asp = 1)
+istack(D, var, group = NULL, icon, size = 0.03, asp = 1,
+  sort = TRUE)
 }
 \arguments{
 \item{D}{Data Frame}
@@ -18,6 +19,8 @@ istack(D, var, group, icon, size = 0.03, asp = 1)
 \item{size}{icon size}
 
 \item{asp}{icon aspect ratio}
+
+\item{size}{icon size}
 }
 \value{
 a ggplot object that can be modified downstream
