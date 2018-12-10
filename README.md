@@ -3,7 +3,7 @@ Icon stack bars with group coloring
 
 # Installation
 ```
-devtools::install_github("teng-gao/istack")
+devtools::install_github("leukgen/istack")
 ```
 
 # Example: Cancer types and treatment
