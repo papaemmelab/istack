@@ -7,8 +7,8 @@
 #' @return a ggplot object that can be modified downstream
 #' @export
 
-istack = function(D, var, group, icon = "https://teng-gao.github.io/images/person.png", 
-                  icon_size = 0.03, icon_asp = 1, palette = "Dark2") {
+istack = function(D, var, group, 
+                  icon, icon_size = 0.03, icon_asp = 1, palette = "Dark2") {
   
   colors = RColorBrewer::brewer.pal(length(unique(D[[group]])), palette)
   cmap = data.frame(level = unique(D[[group]]), color = colors)
