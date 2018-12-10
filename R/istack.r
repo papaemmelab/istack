@@ -75,7 +75,7 @@ simulate_gym = function(n = 10) {
   exercises = c(rep('Squat', 3), rep('Bicep', 3),
                 'Stretching', rep('Bench', 2), rep('Legs', 3),
                 'Back', 'Dumbbell', 'Dead lift',
-                'Pullup', '', 'Weighted pullup', 'Hammer')
+                'Pullup', 'Weighted pullup', 'Hammer')
   days = c('Monday', rep('Tuesday', 2), 'Wednesday',
            'Thursday', 'Rest day', rep('No leg day', 4))
   nums = sample((round(n/2)):(n*3), length(exercises), replace=T)
