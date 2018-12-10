@@ -2,7 +2,7 @@
 Icon stack bars with group coloring
 
 # Note
-- For now only works with ggplot2 `3.0.0`. You might need to downgrade (see below)
+- For now coloring only works with ggplot2 `3.0.0`. You might need to downgrade (see below)
 - For now only PNGs with transparent backgrounds work well with coloring.
 
 # Installation
