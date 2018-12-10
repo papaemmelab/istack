@@ -12,26 +12,34 @@ devtools::install_version("ggplot2", version = "3.0.0", repos = "http://cran.us.
 library(istack)
 library(ggplot2)
 
-cancers = simulate_cancers()
+set.seed(2018-12-09)
+cancers = simulate_cancers(15)
 
-p = istack(cancers, 'Disease', 'Treatment', 
+p = istack(cancers, 
+           var = 'Disease', 
+           group = 'Treatment', 
            icon = "https://teng-gao.github.io/images/person.png",
-           icon_size = 0.07,
-           palette = 'Dark2')
+           icon_size = 0.02,
+           icon_asp = 3,
+           palette = "Dark2")
 
-p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) 
+p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) +
+  ggtitle('Cancer Treatments')
 ```
 ![Alt text](cancers.png?raw=true "")
 
 
 # Example: mtcars
 ```
-p = istack(mtcars, 'carb', 'gear', 
+p = istack(mtcars, 
+           var = 'carb', 
+           group = 'gear', 
            icon = "https://upload.wikimedia.org/wikipedia/commons/7/7e/Car_icon_transparent.png",
            icon_size = 0.12,
-           palette = 'Dark2')
+           palette = "Dark2")
 
-p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed')) + coord_flip()
+p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed')) + 
+  coord_flip() + ggtitle('mtcars')
 ```
 ![Alt text](mtcars.png?raw=true "")
 
