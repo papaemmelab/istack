@@ -44,21 +44,6 @@ p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed'
 ```
 ![Alt text](gains.png?raw=true "")
 
-
-# Example: mtcars
-```
-p = istack(mtcars, 
-           var = 'carb', 
-           group = 'gear', 
-           icon = "https://upload.wikimedia.org/wikipedia/commons/7/7e/Car_icon_transparent.png",
-           size = 0.12,
-           asp = 1)
-
-p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed')) + 
-  coord_flip() + ggtitle('mtcars')
-```
-![Alt text](mtcars.png?raw=true "")
-
 # Credits
  - @kellylbolton
  - @GuangchuangYu
