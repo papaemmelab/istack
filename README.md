@@ -58,9 +58,6 @@ p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed'
 ```
 ![Alt text](mtcars.png?raw=true "")
 
-# Note
-- For now only PNGs with transparent backgrounds work well with coloring.
-
 # Credits
  - @kellylbolton
  - @GuangchuangYu
