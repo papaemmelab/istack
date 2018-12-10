@@ -3,6 +3,7 @@ Icon stack bars with group coloring
 
 # Installation
 ```
+install.packages("devtools")
 devtools::install_github("leukgen/istack")
 ```
 
