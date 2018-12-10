@@ -47,7 +47,7 @@ istack = function(D, var, group, icon = "https://teng-gao.github.io/images/perso
         data = slice,
         size = icon_size,
         aes(x = n, y = var, image = image),
-        color = unique(unique(slice$color)))
+        colour = unique(unique(slice$color)))
   }
   
   p = 
