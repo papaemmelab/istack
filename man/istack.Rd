@@ -4,9 +4,7 @@
 \alias{istack}
 \title{Stack custom icons with group coloring}
 \usage{
-istack(D, var, group,
-  icon = "https://teng-gao.github.io/images/person.png",
-  icon_size = 0.03, palette = "Set2")
+istack(D, var, group, icon, size = 0.03, asp = 1)
 }
 \arguments{
 \item{D}{Data Frame}
@@ -17,7 +15,9 @@ istack(D, var, group,
 
 \item{icon}{link to any image icon on the internet. For coloring to work, has to be a PNG with transparent background}
 
-\item{palette}{Color theme in RColorBrewer}
+\item{size}{icon size}
+
+\item{asp}{icon aspect ratio}
 }
 \value{
 a ggplot object that can be modified downstream

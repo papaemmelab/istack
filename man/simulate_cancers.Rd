@@ -4,7 +4,7 @@
 \alias{simulate_cancers}
 \title{Simulate cancer demo dataset}
 \usage{
-simulate_cancers()
+simulate_cancers(n = 10)
 }
 \description{
 Simulate cancer demo dataset

@@ -10,10 +10,9 @@ cancers = simulate_cancers(15)
 p = istack(cancers, 
            var = 'Disease', 
            group = 'Treatment', 
-           icon = "https://teng-gao.github.io/images/person.png",
-           icon_size = 0.02,
-           icon_asp = 3,
-           palette = "Dark2")
+           icon = "https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg",
+           size = 0.025,
+           asp = 3)
 
 p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) +
   ggtitle('Cancer Treatments')
@@ -23,10 +22,8 @@ p = istack(mtcars,
            var = 'carb', 
            group = 'gear', 
            icon = "https://upload.wikimedia.org/wikipedia/commons/7/7e/Car_icon_transparent.png",
-           icon_size = 0.12,
-           palette = "Dark2")
+           size = 0.12,
+           asp = 1)
 
 p + theme(panel.grid.major.y = element_line(colour = "grey", linetype = 'dashed')) + 
   coord_flip() + ggtitle('mtcars')
-
-#

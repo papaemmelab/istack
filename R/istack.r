@@ -3,21 +3,21 @@
 #' @param var categorical variable that is to be stacked
 #' @param group grouping categorical variable that is to color the icons
 #' @param icon link to any image icon on the internet. For coloring to work, has to be a PNG with transparent background
-#' @param palette Color theme in RColorBrewer
+#' @param size icon size
+#' @param asp icon aspect ratio
 #' @return a ggplot object that can be modified downstream
 #' @export
 
-istack = function(D, var, group, 
-                  icon, icon_size = 0.03, icon_asp = 1, palette = "Dark2") {
+istack = function(D, var, group, icon, size = 0.03, asp = 1) {
   
-  colors = RColorBrewer::brewer.pal(length(unique(D[[group]])), palette)
-  cmap = data.frame(level = unique(D[[group]]), color = colors)
-  
+  # giving nicknames
   D['var'] = factor(D[[var]])
   D['group'] = factor(D[[group]])
   
+  # sort the levels of variable column
   D['var'] = factor(D[['var']], names(sort(table(D[['var']]), decreasing = F)))
   
+  # calculate coordinates
   D = 
     do.call(
       rbind, 
@@ -31,45 +31,23 @@ istack = function(D, var, group,
       )
     )
   
-  D['color'] = cmap[['color']][match(D[['group']], cmap[['level']])]
-  
   D['image'] = icon
   
-  p = ggplot() + 
-    ggplot2::geom_point(data = D,
-               aes(x = n , y = var, color = group),
-               alpha = 0,
-               size = 5,
-               pch = 15)
-  
-  for (slice in split(D, D$color)) {
-    p = p + 
-      ggimage::geom_image(
-        data = slice,
-        size = icon_size,
-        asp = icon_asp,
-        aes(x = n, y = var, image = image),
-        colour = unique(unique(slice$color)))
-  }
-  
-  p = 
-    p +
-    ggplot2::theme(
-      plot.title = element_text(hjust = 0.5),
-      panel.background = element_blank(),
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      axis.ticks = element_blank(),
-      legend.key = element_rect(colour = "transparent", fill = "white")
-    ) +
-    ggplot2::scale_color_manual(
-      name = group,
-      values = as.character(cmap[['color']]), 
-      labels = cmap[['level']]
-    ) +
-    ggplot2::guides(colour = guide_legend(override.aes = list(alpha = 1))) +
-    ylab(var) + xlab('') + 
-    ggplot2::scale_x_continuous(breaks = scales::pretty_breaks(4))
+  # create the plot
+  p = ggplot2::ggplot(data = D, aes(x = n, y = var, color = group)) + 
+      ggimage::geom_image(aes(image=image), asp = asp, size = size) +
+      ggplot2::theme(
+        plot.title = element_text(hjust = 0.5),
+        panel.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank()
+      ) + 
+      ggplot2::labs(color = group) + 
+      ggplot2::ylab(var) +
+      ggplot2::xlab('') + 
+      ggplot2::scale_x_continuous(breaks = scales::pretty_breaks(4), expand = c(0,0.6))
   
   return(p)
 }
