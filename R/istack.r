@@ -7,7 +7,8 @@
 #' @return a ggplot object that can be modified downstream
 #' @export
 
-istack = function(D, var, group, icon = "https://teng-gao.github.io/images/person.png", icon_size = 0.03, palette = "Set2") {
+istack = function(D, var, group, icon = "https://teng-gao.github.io/images/person.png", 
+                  icon_size = 0.03, icon_asp = 1, palette = "Dark2") {
   
   colors = RColorBrewer::brewer.pal(length(unique(D[[group]])), palette)
   cmap = data.frame(level = unique(D[[group]]), color = colors)
@@ -46,6 +47,7 @@ istack = function(D, var, group, icon = "https://teng-gao.github.io/images/perso
       ggimage::geom_image(
         data = slice,
         size = icon_size,
+        asp = icon_asp,
         aes(x = n, y = var, image = image),
         colour = unique(unique(slice$color)))
   }
@@ -53,6 +55,7 @@ istack = function(D, var, group, icon = "https://teng-gao.github.io/images/perso
   p = 
     p +
     ggplot2::theme(
+      plot.title = element_text(hjust = 0.5),
       panel.background = element_blank(),
       panel.grid.major = element_blank(),
       panel.grid.minor = element_blank(),
@@ -74,14 +77,14 @@ istack = function(D, var, group, icon = "https://teng-gao.github.io/images/perso
 
 #' Simulate cancer demo dataset
 #' @export
-simulate_cancers = function() {
-  diseases = c('Breast caner', 'Prostate cancer',
-               'Brain cancer', 'Colorectal cancer',
+simulate_cancers = function(n = 10) {
+  diseases = c(rep('Breast caner', 3), rep('Prostate cancer', 3),
+               'Brain cancer', rep('Colorectal cancer', 2), rep('Colon cancer', 3),
                'Pancreatic cancer', 'Thyroid cancer', 'Lung Cancer',
                'Bladder cancer', 'Ovarian cancer', 'Sarcoma', 'Leukemia')
   treatments = c('Untreated', rep('Radiotherapy', 3), rep('Chemotherapy', 5),
                  'Targeted therapy')
-  nums = sample(5:30, length(diseases), replace=T)
+  nums = sample((round(n/2)):(n*3), length(diseases), replace=T)
 
   cancers = data.frame(unname(do.call(c, mapply(function(d, n) {rep(d, n)}, diseases, nums))))
   colnames(cancers) = 'Disease'
