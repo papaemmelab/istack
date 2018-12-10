@@ -28,15 +28,15 @@ p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed'
 
 # Example: Gains
 ```
-set.seed(2018-12-09)
-gym = simulate_gym(10)
+set.seed(2018-12-10)
+gym = simulate_gym(5)
 
 p = istack(gym, 
            var = 'exercises', 
            group = 'days', 
            icon = "https://svgsilh.com/svg/295375.svg",
-           size = 0.015,
-           asp = 3)
+           size = 0.035,
+           asp = 1.4)
 
 p + theme(panel.grid.major.x = element_line(colour = "grey", linetype = 'dashed')) +
   ggtitle('Gains')
