@@ -1,5 +1,5 @@
 # iStack
-Icon stack bars with group coloring
+Pictograms with group coloring
 
 # Installation
 ```
